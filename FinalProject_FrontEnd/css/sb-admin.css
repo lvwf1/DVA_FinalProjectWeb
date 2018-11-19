@@ -84,6 +84,9 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 .z-1 {
   z-index: 1;
 }
+.input-margin{
+  margin-top:10px;
+}
 
 .navbar-nav .form-inline .input-group {
   width: 100%;
@@ -357,6 +360,8 @@ footer.sticky-footer .copyright {
   line-height: 1;
   font-size: 0.8rem;
 }
+
+
 
 @media (min-width: 768px) {
   footer.sticky-footer {
