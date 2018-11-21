@@ -5,7 +5,7 @@ import csv
 
 players = defaultdict(dict)
 
-with open('csv/Seasons_Stats_Processed.csv') as csvfile:
+with open('csv/Playoffs_Stats_All.csv') as csvfile:
     csvreader = csv.DictReader(csvfile)
     for row in csvreader:
         row['Year'] = int(row['Year'])
@@ -14,7 +14,7 @@ with open('csv/Seasons_Stats_Processed.csv') as csvfile:
         row['WS/48'] = float(row['WS/48'])
         if (row['Year'] in players[row['PlayerId']]):
             # Merge with existing row, must have been traded (weighted sum for ws48 might not be valid)
-            players[row['PlayerId']][row['Year']]['WS/48'] = (row['MP'] * row['WS/48'] + players[row['PlayerId']][row['Year']]['MP'] * players[row['PlayerId']][row['Year']]['WS/48']) / (row['MP'] + players[row['PlayerID']][row['Year']]['MP']);
+            players[row['PlayerId']][row['Year']]['WS/48'] = (row['MP'] * row['WS/48'] + players[row['PlayerId']][row['Year']]['MP'] * players[row['PlayerId']][row['Year']]['WS/48']) / (row['MP'] + players[row['PlayerId']][row['Year']]['MP']);
             players[row['PlayerId']][row['Year']]['WS'] += row['WS'];
             players[row['PlayerId']][row['Year']]['MP'] += row['MP'];
         else:
@@ -23,6 +23,10 @@ with open('csv/Seasons_Stats_Processed.csv') as csvfile:
 def ws_max(rows, current_season):
     ws_max = -float('inf')
     for row in rows:
+        row['Year'] = int(row['Year'])
+        row['MP'] = int(row['MP'])
+        row['WS'] = float(row['WS'])
+        row['WS/48'] = float(row['WS/48'])
         if (row['WS'] > ws_max and row['Year'] < current_season):
             ws_max = row['WS']
     return ws_max
@@ -42,7 +46,7 @@ for i in players:
             row['WS/48_old'] = old['WS/48']
             rows.append(row)
 
-with open('csv/Seasons_Stats_Processed_2.csv', 'w') as output_file:
+with open('csv/Playoffs_Stats_All_Processed.csv', 'w') as output_file:
     dict_writer = csv.DictWriter(output_file, ['PlayerId','Year','Player','Pos','Age','Tm','G','GS','MP_old', 'MP','PER','TS%','3PAr','FTr','ORB%','DRB%','TRB%','AST%','STL%','BLK%','TOV%','USG%','OWS','DWS','WS_old', 'WS', 'WS_max', 'WS/48_old', 'WS/48','OBPM','DBPM','BPM','VORP','FG','FGA','FG%','3P','3PA','3P%','2P','2PA','2P%','eFG%','FT','FTA','FT%','ORB','DRB','TRB','AST','STL','BLK','TOV','PF','PTS'])
     dict_writer.writeheader()
     dict_writer.writerows(rows)

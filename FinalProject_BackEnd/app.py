@@ -11,20 +11,38 @@ api = Api(app)
 class MostImprovedPlayer(Resource):
     CORS(app)
     def get(self, p):
-        return getMIP(p)
+        return getMIP(p,'season')
+
+class MostImprovedPlayerPlayoff(Resource):
+    CORS(app)
+    def get(self, p):
+        return getMIP(p,'playoff')
 
 class PlayerStats(Resource):
     CORS(app)
     def get(self, p):
-        return getPlayerStats(p)
+        return getPlayerStats(p,'season')
+
+class PlayerStatsPlayoff(Resource):
+    CORS(app)
+    def get(self, p):
+        return getPlayerStats(p,'playoff')
 
 class TeamWinShare(Resource):
     CORS(app)
     def get(self, y):
-        return getAllWinShare(y)
+        return getAllWinShare(y,'season')
 
-api.add_resource(MostImprovedPlayer, '/mostimprovedplayer/<int:p>')
-api.add_resource(PlayerStats, '/player/<string:p>')
-api.add_resource(TeamWinShare, '/teamwinshare/<int:y>')
+class TeamWinSharePlayoff(Resource):
+    CORS(app)
+    def get(self, y):
+        return getAllWinShare(y,'playoff')
+
+api.add_resource(MostImprovedPlayer, '/mostimprovedplayerseasons/<int:p>')
+api.add_resource(MostImprovedPlayerPlayoff, '/mostimprovedplayerplayoffs/<int:p>')
+api.add_resource(PlayerStats, '/playerseasons/<string:p>')
+api.add_resource(PlayerStatsPlayoff, '/playerplayoffs/<string:p>')
+api.add_resource(TeamWinShare, '/teamwinshareseasons/<int:y>')
+api.add_resource(TeamWinSharePlayoff, '/teamwinshareplayoffs/<int:y>')
 
 app.run()

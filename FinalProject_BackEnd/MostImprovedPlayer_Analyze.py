@@ -3,10 +3,13 @@ import csv
 import matplotlib.pyplot as plt
 import numpy as np
 
-def getMIP(year):
+def getMIP(year,game):
     results = defaultdict(list)
-
-    with open('csv/Seasons_Stats_Processed_2.csv') as csvfile:
+    if game=='season':
+        filename='csv/Seasons_Stats_Processed.csv'
+    if game=='playoff':
+        filename='csv/Playoffs_Stats_All_Processed.csv'
+    with open(filename) as csvfile:
         csvreader = csv.DictReader(csvfile)
         for row in csvreader:
             row['Year'] = int(row['Year'])

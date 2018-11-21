@@ -5,7 +5,7 @@ import numpy as np
 
 results = defaultdict(list)
 
-with open('csv/Seasons_Stats_Processed_2.csv') as csvfile:
+with open('csv/Seasons_Stats_Processed.csv') as csvfile:
     csvreader = csv.DictReader(csvfile)
     for row in csvreader:
         row['Year'] = int(row['Year'])
@@ -96,4 +96,4 @@ def plotMIP(year):
             # Show graphic
             plt.show()
 
-plotMIP(2017)
+plotMIP(2018)
