@@ -8,7 +8,7 @@ def getMIP(year,game):
     if game=='season':
         filename='csv/Seasons_Stats_Processed.csv'
     if game=='playoff':
-        filename='csv/Playoffs_Stats_All_Processed.csv'
+        filename='csv/Playoffs_Stats_Processed.csv'
     with open(filename) as csvfile:
         csvreader = csv.DictReader(csvfile)
         for row in csvreader:

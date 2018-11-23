@@ -11,6 +11,13 @@ html {
 
 body {
   height: 100%;
+  font-family: 'Trebuchet MS';
+}
+table { 
+  width:100%; text-align:center; 
+}
+table tr, table td { 
+  margin:0; padding:2px; border-width:0; 
 }
 
 #wrapper {

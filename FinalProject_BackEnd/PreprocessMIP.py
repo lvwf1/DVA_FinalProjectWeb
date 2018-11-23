@@ -5,7 +5,7 @@ import csv
 
 players = defaultdict(dict)
 
-with open('csv/Playoffs_Stats_All.csv') as csvfile:
+with open('csv/Playoffs_Stats.csv') as csvfile:
     csvreader = csv.DictReader(csvfile)
     for row in csvreader:
         row['Year'] = int(row['Year'])
@@ -46,7 +46,14 @@ for i in players:
             row['WS/48_old'] = old['WS/48']
             rows.append(row)
 
-with open('csv/Playoffs_Stats_All_Processed.csv', 'w') as output_file:
-    dict_writer = csv.DictWriter(output_file, ['PlayerId','Year','Player','Pos','Age','Tm','G','GS','MP_old', 'MP','PER','TS%','3PAr','FTr','ORB%','DRB%','TRB%','AST%','STL%','BLK%','TOV%','USG%','OWS','DWS','WS_old', 'WS', 'WS_max', 'WS/48_old', 'WS/48','OBPM','DBPM','BPM','VORP','FG','FGA','FG%','3P','3PA','3P%','2P','2PA','2P%','eFG%','FT','FTA','FT%','ORB','DRB','TRB','AST','STL','BLK','TOV','PF','PTS'])
+with open('csv/Playoffs_Stats_Processed.csv', 'w') as output_file:
+    dict_writer = csv.DictWriter(output_file,
+                                 ['PlayerId', 'Year', 'Player', 'Pos', 'Age', 'Tm', 'G', 'GS', 'MP_old', 'MP', 'PER',
+                                  'TS%', '3PAr', 'FTr', 'ORB%', 'DRB%', 'TRB%', 'AST%', 'STL%', 'BLK%', 'TOV%', 'USG%',
+                                  'OWS', 'DWS', 'WS_old', 'WS', 'WS_max', 'WS/48_old', 'WS/48', 'OBPM', 'DBPM', 'BPM',
+                                  'VORP', 'FG', 'FGA', 'FG%', '3P', '3PA', '3P%', '2P', '2PA', '2P%', 'eFG%', 'FT',
+                                  'FTA', 'FT%', 'ORB', 'DRB', 'TRB', 'AST', 'STL', 'BLK', 'TOV', 'PF', 'PTS', 'MP/G',
+                                  'ORB/G', 'DRB/G', 'TRB/G', 'AST/G',
+                                  'STL/G', 'BLK/G', 'TOV/G', 'PF/G', 'PTS/G', 'Salary'])
     dict_writer.writeheader()
     dict_writer.writerows(rows)

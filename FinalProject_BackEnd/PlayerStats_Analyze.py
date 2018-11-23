@@ -61,7 +61,8 @@ def getPlayerStats(player,game):
                                         'BLK':row['BLK'],
                                         'TOV':row['TOV'],
                                         'PF':row['PF'],
-                                        'PTS':row['PTS']
+                                        'PTS':row['PTS'],
+                                        'Salary':row['Salary']
                                         }
 
         return my_data
