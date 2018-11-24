@@ -1,7 +1,5 @@
 from collections import defaultdict
-import numpy as np
 import csv
-import matplotlib.pyplot as plt
 
 results = defaultdict(list)
 
@@ -9,7 +7,7 @@ def getPlayerStats(player,game):
     if game=='season':
         filename='csv/Seasons_Stats.csv'
     if game=='playoff':
-        filename='csv/Playoffs_Stats_All.csv'
+        filename='csv/Playoffs_Stats.csv'
     with open(filename) as csvfile:
         csvreader = csv.DictReader(csvfile)
         my_data = {}
@@ -62,7 +60,16 @@ def getPlayerStats(player,game):
                                         'TOV':row['TOV'],
                                         'PF':row['PF'],
                                         'PTS':row['PTS'],
-                                        'Salary':row['Salary']
-                                        }
+                                        'MP/G': row['MP/G'],
+                                        'ORB/G': row['ORB/G'],
+                                        'DRB/G': row['DRB/G'],
+                                        'TRB/G': row['TRB/G'],
+                                        'AST/G': row['AST/G'],
+                                        'STL/G': row['STL/G'],
+                                        'BLK/G': row['BLK/G'],
+                                        'TOV/G': row['TOV/G'],
+                                        'PF/G': row['PF/G'],
+                                        'PTS/G': row['PTS/G'],
+                                        'Salary':row['Salary']}
 
         return my_data

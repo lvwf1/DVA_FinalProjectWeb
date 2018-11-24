@@ -12,7 +12,7 @@ from sklearn import tree
 def selectData(dataset):
     if dataset=='d1':
         df_data = pd.read_csv("csv/Seasons_Stats_ML.csv",
-                              usecols=['G', 'GS', 'MP', 'PER', 'TS%', '3PAr', 'FTr', 'ORB%', 'DRB%', 'TRB%', 'AST%',
+                              usecols=['PER', 'TS%', '3PAr', 'FTr', 'ORB%', 'DRB%', 'TRB%', 'AST%',
                                        'STL%', 'BLK%', 'TOV%', 'USG%', 'OWS', 'DWS', 'WS', 'WS/48', 'OBPM', 'DBPM',
                                        'BPM', 'VORP', 'FG', 'FGA', 'FG%', '3P', '3PA', '3P%', '2P', '2PA', '2P%',
                                        'eFG%', 'FT', 'FTA', 'FT%', 'ORB', 'DRB', 'TRB', 'AST', 'STL', 'BLK', 'TOV',
@@ -109,6 +109,11 @@ def DecisionTree(dataset,norm):
 #Neural Network
 
 def DNN(dataset,dnn_type, norm):
+    if dataset=='d1':
+        Year = 2018
+    if dataset=='d2':
+        Year = 2017
+
     df_data, df_label = selectData(dataset)
     df_data_train, df_data_test, df_data_norm_train, df_data_norm_test, df_label_test, df_label_train = LoadData(
         dataset)
@@ -125,7 +130,7 @@ def DNN(dataset,dnn_type, norm):
     idx = list(range(df_data_train.shape[0]))
     np.random.shuffle(idx)
 
-    model1.fit(df_data_train.iloc[idx],
+    hist = model1.fit(df_data_train.iloc[idx],
                       df_label_train.iloc[idx].AllStar,
                       validation_split=0.2, epochs=30, shuffle=True)
     dnn_predict = model1.predict_classes(df_data_test)
@@ -140,7 +145,7 @@ def DNN(dataset,dnn_type, norm):
 
     model1.compile(loss="sparse_categorical_crossentropy", optimizer="rmsprop", metrics=["accuracy"])
 
-    model1.fit(df_data_norm_train.iloc[idx],
+    hist = model1.fit(df_data_norm_train.iloc[idx],
                       df_label_train.iloc[idx].AllStar,
                       validation_split=0.2, epochs=30, shuffle=True)
     dnn_predict = model1.predict_classes(df_data_norm_test)
@@ -156,11 +161,6 @@ def DNN(dataset,dnn_type, norm):
 
     df_label["Tm_IdX"] = [team2idx[i] for i in df_label.Tm_Id]
     df_label["IDX"] = [player2idx[i] for i in df_label.ID]
-
-    if dataset=='d1':
-        Year = 2018
-    if dataset=='d2':
-        Year = 2017
 
     df_label_test = df_label.loc[df_label.Year == Year]
     df_label_train = df_label.loc[df_label.Year < Year]
@@ -183,7 +183,7 @@ def DNN(dataset,dnn_type, norm):
 
     model2.compile(loss="sparse_categorical_crossentropy", optimizer="rmsprop", metrics=["accuracy"])
 
-    model2.fit([df_label_train.Tm_IdX, df_data_train.iloc[idx]],
+    hist = model2.fit([df_label_train.Tm_IdX, df_data_train.iloc[idx]],
                       df_label_train.iloc[idx].AllStar,
                       validation_split=0.2, epochs=30, shuffle=True)
     dnn_predict = model2.predict([df_label_test.Tm_IdX, df_data_test]).argmax(axis=1)
@@ -209,7 +209,7 @@ def DNN(dataset,dnn_type, norm):
 
     model2.compile(loss="sparse_categorical_crossentropy", optimizer="rmsprop", metrics=["accuracy"])
 
-    model2.fit([df_label_train.Tm_IdX, df_data_norm_train.iloc[idx]],
+    hist = model2.fit([df_label_train.Tm_IdX, df_data_norm_train.iloc[idx]],
                       df_label_train.iloc[idx].AllStar,
                       validation_split=0.2, epochs=30, shuffle=True)
     dnn_predict = model2.predict([df_label_test.Tm_IdX, df_data_norm_test]).argmax(axis=1)
@@ -239,7 +239,7 @@ def DNN(dataset,dnn_type, norm):
 
     model3.compile(loss="sparse_categorical_crossentropy", optimizer="rmsprop", metrics=["accuracy"])
 
-    model3.fit([df_label_train.Tm_IdX, df_label_train.IDX, df_data_train.iloc[idx]],
+    hist = model3.fit([df_label_train.Tm_IdX, df_label_train.IDX, df_data_train.iloc[idx]],
                       df_label_train.iloc[idx].AllStar,
                       validation_split=0.2, epochs=30, shuffle=True)
     model3.predict([df_label_test.Tm_IdX, df_label_test.IDX, df_data_test]).argmax(axis=1)
@@ -269,7 +269,7 @@ def DNN(dataset,dnn_type, norm):
 
     model3.compile(loss="sparse_categorical_crossentropy", optimizer="rmsprop", metrics=["accuracy"])
 
-    model3.fit([df_label_train.Tm_IdX, df_label_train.IDX, df_data_norm_train.iloc[idx]],
+    hist = model3.fit([df_label_train.Tm_IdX, df_label_train.IDX, df_data_norm_train.iloc[idx]],
                       df_label_train.iloc[idx].AllStar,
                       validation_split=0.2, epochs=30, shuffle=True)
     dnn_predict = model3.predict([df_label_test.Tm_IdX, df_label_test.IDX, df_data_norm_test]).argmax(axis=1)

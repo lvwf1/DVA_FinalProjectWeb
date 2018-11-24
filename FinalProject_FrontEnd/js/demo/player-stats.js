@@ -7,9 +7,31 @@ function getplayerstats(action) {
   var player = document.getElementById("playername").value;
   var game = document.getElementById("selectgame1").value;
   var url = "http://localhost:5000/player" + game + "/"
+  $('#playerstatsinput').append('<div class="loader" id="loader"></div>');
   $.ajax({
     url: url + player, success: function (result) {
       if (Object.keys(result).length>0){
+        if(action=='update'){
+          $('#myPlayer').remove();
+          $('#myplayerstats').remove();
+          $('#myplayerrank').remove();
+          $('#myPlayerArea').append('<div id="myPlayer" class="col-sm-6 col-xl-4"></div>');
+          $('#myPlayerArea').append('<div id="myplayerstats" class="col-sm-6 col-xl-4"></div>');
+          $('#myPlayerArea').append('<div id="myplayerrank" class="col-sm-6 col-xl-4"></div>');
+        }
+        if (imageExists("/img/"+player.replace(" ","%20")+".png")){
+          $('#myPlayer').append("<img src=/img/"+player.replace(" ","%20")+".png />"); 
+        }
+        var url2 = "http://localhost:5000/sortstats/" + Object.keys(result)[Object.keys(result).length-1] + "/" + game
+        $.ajax({
+          url: url2, success: function (rank) {
+            attrlist = ['FG%', 'FT%', '3P%', 'PTS/G', 'TRB/G', 'AST/G', 'BLK/G', 'STL/G']
+            for (var i = 0; i < attrlist.length; i++) {
+              $('#myplayerstats').append("<div>" + attrlist[i] + ": " + Math.round(result[Object.keys(result)[Object.keys(result).length - 1]][attrlist[i]]*100)/100 + "</div>")
+              $('#myplayerrank').append("<div>" + attrlist[i] + " Rank: #" + (rank[attrlist[i]].indexOf(player)+1) + "</div>")
+            }
+          }
+        })
         $('#myPlayerStatsChart').remove();
         $('#myChartArea1').append('<canvas id="myPlayerStatsChart" width="100%" height="30"><canvas>');
         ctx = document.getElementById("myPlayerStatsChart");
@@ -99,6 +121,7 @@ function getplayermip() {
   var url = "http://localhost:5000/mostimprovedplayer" + game + "/"
   $('#myMIP').remove();
   $('#myChartArea2').append('<canvas id="myMIP" width="100%" height="30"><canvas>');
+  $('#mostimproveplayerinput').append('<div class="loader" id="loader"></div>');
   $.ajax({
     url: url + year, success: function (result) {
       var ctx = document.getElementById("myMIP");
@@ -138,11 +161,11 @@ function getteamwinshare() {
   $('#myteamwinshare').remove();
   $('#myChartArea3').append('<canvas id="myteamwinshare" width="100%" height="50"><canvas>');
   var url = "http://localhost:5000/teamwinshare" + game + "/"
+  $('#teamwinshareinput').append('<div class="loader" id="loader"></div>');
   $.ajax({
     url: url + year, success: function (result) {
       var ctx = document.getElementById("myteamwinshare");
       var attr = document.getElementById("selectattribute3").value;
-      console.log(result)
       var teamlist = Object.keys(result)
       if (teamlist.indexOf('TOT') > -1) {
         teamlist.splice(teamlist.indexOf('TOT'), 1);
@@ -150,14 +173,14 @@ function getteamwinshare() {
       var WS = [], OWS = [], DWS = []
       var CWS = [], PFWS = [], SFWS = [], SGWS = [], PGWS = []
       for (var i = 0; i < teamlist.length; i++) {
-        WS[i] = sumarray(result[teamlist[i]].WS)
-        OWS[i] = sumarray(result[teamlist[i]].OWS)
-        DWS[i] = sumarray(result[teamlist[i]].DWS)
-        CWS[i] = sumarraypos(result[teamlist[i]], 'C')
-        PFWS[i] = sumarraypos(result[teamlist[i]], 'PF')
-        SFWS[i] = sumarraypos(result[teamlist[i]], 'SF')
-        SGWS[i] = sumarraypos(result[teamlist[i]], 'SG')
-        PGWS[i] = sumarraypos(result[teamlist[i]], 'PG')
+        WS[i] = Math.round(sumarray(result[teamlist[i]].WS)*10)/10
+        OWS[i] = Math.round(sumarray(result[teamlist[i]].OWS)*10)/10
+        DWS[i] = Math.round(sumarray(result[teamlist[i]].DWS)*10)/10
+        CWS[i] = Math.round(sumarraypos(result[teamlist[i]], 'C')*10)/10
+        PFWS[i] = Math.round(sumarraypos(result[teamlist[i]], 'PF')*10)/10
+        SFWS[i] = Math.round(sumarraypos(result[teamlist[i]], 'SF')*10)/10
+        SGWS[i] = Math.round(sumarraypos(result[teamlist[i]], 'SG')*10)/10
+        PGWS[i] = Math.round(sumarraypos(result[teamlist[i]], 'PG')*10)/10
       }
       datasets = [{
         label: 'OWS',
@@ -223,6 +246,27 @@ function getteamwinshare() {
     }
   });
 }
+function estimateAllStar() {
+  var method = document.getElementById("selectalgorithm").value;
+  var dataset = document.getElementById("selectdatasets").value;
+  var norm = document.getElementById("selectnorm").value;
+  var url = "http://localhost:5000/allstar/"+method+"/"+dataset+"/"+norm
+  $('#allstarinput').append('<div class="loader" id="loader"></div>');
+  $.ajax({
+    url: url, success: function (result) {
+      if(dataset=='d1'){
+        drawRadar(result,2018)
+      }
+      if(dataset=='d2'){
+        drawRadar(result,2017)
+      }
+    },
+    error: function (jqXHR, exception) {
+      $('#loader').remove();
+      alert("Error occurs, please restart Python application then try again")
+    }
+  });
+}
 function drawGraph1(ctx, xlabel, datasets, min, max) {
   new Chart(ctx, {
     type: 'line',
@@ -253,6 +297,7 @@ function drawGraph1(ctx, xlabel, datasets, min, max) {
       }
     }
   });
+  $('#loader').remove();
 }
 
 function drawGraph2(ctx, barChartData, year, attr, game) {
@@ -270,6 +315,7 @@ function drawGraph2(ctx, barChartData, year, attr, game) {
       }
     }
   });
+  $('#loader').remove();
 }
 function drawGraph3(ctx, barChartData, year, game) {
   new Chart(ctx, {
@@ -298,90 +344,81 @@ function drawGraph3(ctx, barChartData, year, game) {
       }
     }
   });
+  $('#loader').remove();
 }
-function estimateAllStar() {
 
-  var method = document.getElementById("selectalgorithm").value;
-  var dataset = document.getElementById("selectdatasets").value;
-  var norm = document.getElementById("selectnorm").value;
-  var url = "http://localhost:5000/allstar/"+method+"/"+dataset+"/"+norm
+function drawRadar(result,year){
+  playerlist=[]
+  allstar=[]
+  $('#myplayerradar').remove();
+  $('#myChartArea4').append('<div id="myplayerradar" class="row"></div>');
+  var url2 = "http://localhost:5000/sortstats/" + year + "/seasons"
   $.ajax({
-    url: url, success: function (result) {
-      drawTable(result)
+    url: url2, success: function (rank) {
+  for(var i=0;i<Object.keys(result.Player).length;i++){
+    playerlist[i]=result.Player[Object.keys(result.Player)[i]]
+    allstar[i]=result.AllStar[Object.keys(result.AllStar)[i]]
+    var canvas=$('<canvas width="100%" height="30" class="col-sm-12 col-xl-6"></canvas>');
+    $('#myplayerradar').append(canvas)
+    canvas.attr('id', 'allstar'+i.toString());
+    if (imageExists("/img/"+playerlist[i].replace(" ","%20")+".png")){
+      $('#myplayerradar').append("<img src=/img/"+playerlist[i].replace(" ","%20")+".png align='center'/>"); 
     }
-  });
-}
-
-function drawTable(result){
-  console.log(result)
-	var dataToTable = function (dataset) {
-    var html = '<table>';
-    html += '<thead><tr><th style="width:120px;">#</th>';
-    
-    var columnCount = 0;
-    jQuery.each(dataset.datasets, function (idx, item) {
-        html += '<th style="background-color:' + item.fillColor + ';">' + item.label + '</th>';
-        columnCount += 1;
-    });
-
-    html += '</tr></thead>';
-
-    jQuery.each(dataset.labels, function (idx, item) {
-        html += '<tr><td>' + item + '</td>';
-        for (i = 0; i < columnCount; i++) {
-            html += '<td style="background-color:' + dataset.datasets[i].fillColor + ';">' + (dataset.datasets[i].data[idx] === '0' ? '-' : dataset.datasets[i].data[idx]) + '</td>';
+        var all_star_percentile = {
+          'FG%':(1-rank['FG%'].indexOf(playerlist[i])/rank['FG%'].length)*100,
+          'FT%':(1-rank['FT%'].indexOf(playerlist[i])/rank['FT%'].length)*100,
+          '3P%':(1-rank['3P%'].indexOf(playerlist[i])/rank['3P%'].length)*100, 
+          'PTS/G':(1-rank['PTS/G'].indexOf(playerlist[i])/rank['PTS/G'].length)*100, 
+          'TRB/G':(1-rank['TRB/G'].indexOf(playerlist[i])/rank['TRB/G'].length)*100, 
+          'AST/G':(1-rank['AST/G'].indexOf(playerlist[i])/rank['AST/G'].length)*100, 
+          'BLK/G':(1-rank['BLK/G'].indexOf(playerlist[i])/rank['BLK/G'].length)*100, 
+          'STL/G':(1-rank['STL/G'].indexOf(playerlist[i])/rank['STL/G'].length)*100
         }
-        html += '</tr>';
-    });
-
-    html += '</tr><tbody></table>';
-
-    return html;
-};
-
-playerlist=[]
-allstar=[]
-for(var i=0;i<Object.keys(result.Player).length;i++){
-  playerlist[i]=result.Player[Object.keys(result.Player)[i]]
-  allstar[i]=result.AllStar[Object.keys(result.AllStar)[i]]
-}
-
-var data = {
-    labels: playerlist,
-    datasets: [
-        {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: allstar
-        },
-        {
-            label: "My Second dataset",
-            fillColor: "rgba(151,187,205,0.2)",
-            strokeColor: "rgba(151,187,205,1)",
-            pointColor: "rgba(151,187,205,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
-            data: [28, 48, 40, 19, 86, 27]
-        },
-        {
-            label: "My Third dataset",
-            fillColor: "rgba(55,187,205,0.2)",
-            strokeColor: "rgba(55,187,205,1)",
-            pointColor: "rgba(55,187,205,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
-            data: [18, 48, 40, 29, 86, 57]
+        var rgb = [];
+        for (var j = 0; j < 3; j++) {
+          rgb.push(Math.floor(Math.random() * 255));
         }
-    ]
-};
-jQuery('#allstar').html(dataToTable(data));
+        var config = {
+          type: 'radar',
+          data: {
+            labels: ['FG%', 'FT%', '3P%', 'PTS/G', 'TRB/G', 'AST/G', 'BLK/G', 'STL/G'],
+            datasets: [{
+              label: "Stats Percentile",
+              backgroundColor: 'rgb(' + rgb.join(',') + ',0.2)',
+              borderColor: 'rgb(' + rgb.join(',') + ',1)',
+              pointBackgroundColor: 'rgb(' + rgb.join(',') + ',1)',
+              data: [
+                all_star_percentile['FG%'],
+                all_star_percentile['FT%'],
+                all_star_percentile['3P%'],
+                all_star_percentile['PTS/G'],
+                all_star_percentile['TRB/G'],
+                all_star_percentile['AST/G'],
+                all_star_percentile['BLK/G'],
+                all_star_percentile['STL/G']
+              ]
+            }]
+          },
+          options: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: playerlist[i]
+            },
+            scale: {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          }
+        };
+        new Chart(document.getElementById('allstar'+i.toString()), config);
+        $('#loader').remove();
+      }
+    }
+})
 }
 function sumarray(numbers) {
   var sum = 0
@@ -398,4 +435,10 @@ function sumarraypos(numbers, pos) {
     }
   }
   return sum;
+}
+function imageExists(image_url){
+  var http = new XMLHttpRequest();
+  http.open('HEAD', image_url, false);
+  http.send();
+  return http.status != 404;
 }

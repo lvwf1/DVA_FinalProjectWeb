@@ -5,6 +5,7 @@ from MostImprovedPlayer_Analyze import getMIP
 from PlayerStats_Analyze import getPlayerStats
 from TeamWinShare_Analyze import getAllWinShare
 from FindNBAAllStar import getMostAllStarData,SVM,KNN,NaiveBayes,DecisionTree,DNN
+from PlayerStats_Sort import sortPlayerStats
 
 app = Flask(__name__)
 api = Api(app)
@@ -62,6 +63,11 @@ class getAllStarMost(Resource):
     def get(self, d):
         return getMostAllStarData(d)
 
+class sortStats(Resource):
+    CORS(app)
+    def get(self, y, g):
+        return sortPlayerStats(y,g)
+
 api.add_resource(MostImprovedPlayer, '/mostimprovedplayerseasons/<int:p>')
 api.add_resource(MostImprovedPlayerPlayoff, '/mostimprovedplayerplayoffs/<int:p>')
 api.add_resource(PlayerStats, '/playerseasons/<string:p>')
@@ -70,5 +76,6 @@ api.add_resource(TeamWinShare, '/teamwinshareseasons/<int:y>')
 api.add_resource(TeamWinSharePlayoff, '/teamwinshareplayoffs/<int:y>')
 api.add_resource(getAllStar, '/allstar/<string:m>/<string:d>/<string:n>')
 api.add_resource(getAllStarMost, '/allstar/<string:d>')
+api.add_resource(sortStats, '/sortstats/<int:y>/<string:g>')
 
 app.run()

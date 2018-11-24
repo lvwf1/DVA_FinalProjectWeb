@@ -1,72 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>SB Admin - Login</title>
+  <title>NBA Analysis - Dashboard</title>
 
-    <!-- Bootstrap core CSS-->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS-->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
-    <!-- Custom styles for this template-->
-    <link href="css/sb-admin.css" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet">
 
-  </head>
+</head>
 
-  <body class="bg-dark">
+<body class="bg-dark">
 
-    <div class="container">
-      <div class="card card-login mx-auto mt-5">
-        <div class="card-header">Login</div>
-        <div class="card-body">
-          <form>
-            <div class="form-group">
-              <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
-                <label for="inputEmail">Email address</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
-                <label for="inputPassword">Password</label>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" value="remember-me">
-                  Remember Password
-                </label>
-              </div>
-            </div>
-            <a class="btn btn-primary btn-block" href="index.html">Login</a>
-          </form>
-          <div class="text-center">
-            <a class="d-block small mt-3" href="team.html">Register an Account</a>
-            <a class="d-block small" href="champion.html">Forgot Password?</a>
+  <div class="container">
+    <div class="card mx-auto mt-5">
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fas fa-chart-area"></i>
+          Player Stats
+          <a class="btn btn-outline-secondary" style="float:right" type="button" href="index.html">Back</a>
+        </div>
+        <div id="playerstatsinput" class="input-group input-margin mb-3 col-sm-12 col-xl-8">
+          <input id="playername" type="text" class="form-control" placeholder="Enter Player Name" aria-label="Player"
+            aria-describedby="basic-addon2">
+          <select id="selectgame1" class="form-control">
+            <option value="seasons">SeasonStats</option>
+            <option value="playoffs">PlayoffsStats</option>
+          </select>
+          <select id="selectattribute1" class="form-control">
+            <option value="G">Games</option>
+            <option value="GS">Games Started</option>
+            <option value="MP">Minutes Played</option>
+            <option value="PER">Player Efficiency Rating</option>
+            <option value="TS%">True Shooting Percentage = PTS / (2 * TSA)</option>
+            <option value="3PAr">3PAr</option>
+            <option value="FTr">FTr</option>
+            <option value="ORB%">Offensive Rebound Percentage = 100 * (ORB * (Tm MP / 5)) / (MP * (Tm ORB + Opp DRB))</option>
+            <option value="DRB%">Defensive Rebound Percentage = 100 * (DRB * (Tm MP / 5)) / (MP * (Tm DRB + Opp ORB))</option>
+            <option value="TRB%">Total Rebound Percentage = 100 * (TRB * (Tm MP / 5)) / (MP * (Tm TRB + Opp TRB))</option>
+            <option value="AST%">Assist Percentage = 100 * AST / (((MP / (Tm MP / 5)) * Tm FG) - FG)</option>
+            <option value="STL%">Steal Percentage</option>
+            <option value="BLK%">Block Percentage = 100 * (BLK * (Tm MP / 5)) / (MP * (Opp FGA - Opp 3PA))</option>
+            <option value="TOV%">Turnover Percentage = 100 * TOV / (FGA + 0.44 * FTA + TOV)</option>
+            <option value="USG%">Usage Percentage = 100 * ((FGA + 0.44 * FTA + TOV) * (Tm MP / 5)) / (MP * (Tm FGA +
+              0.44 * Tm FTA + Tm TOV))</option>
+            <option value="OWS">Offensive Win Shares</option>
+            <option value="DWS">Defensive Win Shares</option>
+            <option value="WS" selected>Win Shares</option>
+            <option value="WS/48">Win Shares Per 48 Minutes</option>
+            <option value="OBPM">OBMP</option>
+            <option value="DBPM">DBMP</option>
+            <option value="BPM">Box Plus/Minus</option>
+            <option value="VORP">Efficiency</option>
+            <option value="FG">Field Goals</option>
+            <option value="FGA">Field Goal Percentage = FG / FGA</option>
+            <option value="FG%">Field Goal Attempts</option>
+            <option value="3P">3-Point Field Goals</option>
+            <option value="3PA">3-Point Field Goal Attempts</option>
+            <option value="3P%">3-Point Field Goal Percentage</option>
+            <option value="2P">2-Point Field Goals</option>
+            <option value="2PA">2-Point Field Goal Attempts</option>
+            <option value="2P%">2-Point Field Goal Percentage; the formula is 2P / 2PA.</option>
+            <option value="eFG%">Effective Field Goal Percentage = (FG + 0.5 * 3P) / FGA</option>
+            <option value="FT">Free Throws</option>
+            <option value="FTA">Free Throw Attempts</option>
+            <option value="FT%">Free Throw Percentage = FT / FTA</option>
+            <option value="ORB">Offensive Rebounds</option>
+            <option value="DRB">Defensive Rebounds</option>
+            <option value="TRB">Total Rebounds</option>
+            <option value="AST">Assists</option>
+            <option value="STL">Steals</option>
+            <option value="BLK">Blocks</option>
+            <option value="TOV">Turnovers</option>
+            <option value="PF">Personal Fouls</option>
+            <option value="PTS">Points</option>
+            <option value="MP/G">Minutes Per Game</option>
+            <option value="ORB/G">Offensive Rebound Per Game</option>
+            <option value="DRB/G">Defensive Rebound Per Game</option>
+            <option value="TRB/G">Total Rebound Per Game</option>
+            <option value="AST/G">Assists Per Game</option>
+            <option value="STL/G">Steals Per Game</option>
+            <option value="BLK/G">Blocks Per Game</option>
+            <option value="TOV/G">Turnovers Per Game</option>
+            <option value="PF/G">Personal Fouls Per Game</option>
+            <option value="PTS/G">Points Per Game</option>
+            <option value="Salary">Salary</option>
+          </select>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" onclick="getplayerstats('update')">Analyze</button>
+            <button class="btn btn-outline-secondary" type="button" onclick="getplayerstats('add')">Add to Analyze</button>
           </div>
         </div>
+        <div id="myPlayerArea" class="row">
+        </div>
+        <div id="myChartArea1" class="card-body">
+          <canvas id="myPlayerStatsChart" width="100%" height="30"></canvas>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fas fa-chart-area"></i>
+          Most Improved Player Stats</div>
+        <div id="mostimproveplayerinput" class="input-group input-margin mb-3 col-sm-12 col-xl-8">
+          <input id="mipyear" type="text" class="form-control" placeholder="Enter Year" aria-label="Year"
+            aria-describedby="basic-addon2">
+          <select id="selectgame2" class="form-control">
+            <option value="seasons">SeasonStats</option>
+            <option value="playoffs">PlayoffsStats</option>
+          </select>
+          <select id="selectattribute2" class="form-control">
+            <option value="WS">WinShare</option>
+            <option value="WS/48">WinShare/48</option>
+            <option value="MP">Minutes Play</option>
+          </select>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" onclick="getplayermip()">Analyze</button>
+          </div>
+        </div>
+        <div id="myChartArea2" class="card-body">
+          <canvas id="myMIP" width="100%" height="30"></canvas>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fas fa-chart-area"></i>
+          Team WinShare</div>
+        <div id="teamwinshareinput" class="input-group input-margin mb-3 col-sm-12 col-xl-8">
+          <input id="teamyear" type="text" class="form-control" placeholder="Enter Year" aria-label="Year"
+            aria-describedby="basic-addon2">
+          <select id="selectgame3" class="form-control">
+            <option value="seasons">SeasonStats</option>
+            <option value="playoffs">PlayoffsStats</option>
+          </select>
+          <select id="selectattribute3" class="form-control">
+            <option value="ALL">All</option>
+            <option value="OD">Offense/Defense</option>
+            <option value="POS">Position</option>
+          </select>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" onclick="getteamwinshare()">Analyze</button>
+          </div>
+        </div>
+        <div id="myChartArea3" class="card-body">
+          <canvas id="myteamwinshare" width="100%" height="50"></canvas>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fas fa-table"></i>
+          All Star Player Prediction</div>
+        <div id="allstarinput" class="input-group input-margin mb-3 col-sm-12 col-xl-8">
+          <select id="selectalgorithm" class="form-control">
+            <option value="SVM">SVM</option>
+            <option value="KNN">KNN</option>
+            <option value="NaiveBayes">Naive Bayes</option>
+            <option value="DecisionTree">Decision Tree</option>
+            <option value="DNN1">Deep Neural Network</option>
+            <option value="DNN2">Deep Neural Network with Team ID Embedding Feature</option>
+            <option value="DNN3">Deep Neural Network with Player ID Embedding Feature</option>
+          </select>
+          <select id="selectdatasets" class="form-control">
+            <option value="d1">Dataset1</option>
+            <option value="d2">Dataset2</option>
+          </select>
+          <select id="selectnorm" class="form-control">
+            <option value="True">Normalized</option>
+            <option value="False">Original</option>
+          </select>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" onclick="estimateAllStar()">Analyze</button>
+          </div>
+        </div>
+        <div id="myChartArea4" class="card-body">
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
       </div>
     </div>
+  </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="login.js"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  </body>
+  <!-- Page level plugin JavaScript-->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="vendor/datatables/jquery.dataTables.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin.min.js"></script>
+
+  <!-- Demo scripts for this page-->
+  <script src="js/demo/datatables-demo.js"></script>
+  <script src="js/demo/player-stats.js"></script>
+
+</body>
 
 </html>
