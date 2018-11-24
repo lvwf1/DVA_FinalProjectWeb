@@ -1,0 +1,31 @@
+﻿Rk,Team,Overall,Home,Road,E,W,A,C,SE,NW,P,SW,Pre,Post,≤3,≥10,Oct,Nov,Dec,Jan,Feb,Mar,Apr
+1,Golden State Warriors,73-9,39-2,34-7,27-Mar,46-6,09-Jan,08-Feb,10-0,15-Mar,15-Jan,16-Feb,48-4,25-May,07-Feb,44-5,3-0,16-0,11-Feb,14-Feb,09-Jan,15-Feb,05-Feb
+2,San Antonio Spurs,67-15,40-1,27-14,24-Jun,43-9,09-Jan,07-Mar,08-Feb,15-Mar,14-Apr,14-Feb,45-8,22-Jul,04-Apr,44-6,01-Jan,13-Mar,14-Feb,11-Feb,11-Jan,13-Mar,04-Mar
+3,Cleveland Cavaliers,57-25,33-8,24-17,35-17,22-Aug,14-Apr,08-Aug,13-May,08-Feb,08-Feb,06-Apr,38-14,19-Nov,04-Jul,32-8,02-Jan,11-Mar,08-May,13-Mar,08-May,11-May,04-Mar
+4,Toronto Raptors,56-26,32-9,24-17,39-13,17-13,14-Feb,11-Jul,14-Apr,05-May,05-May,07-Mar,35-17,21-Sep,06-Jun,28-Oct,2-0,09-Jul,09-Jun,12-Feb,07-Apr,11-May,06-Feb
+5,Oklahoma City Thunder,55-27,32-9,23-18,18-Dec,37-15,06-Apr,04-Jun,08-Feb,13-Mar,12-Jun,12-Jun,40-14,15-13,08-Jun,33-5,2-0,09-Jul,12-Mar,13-Mar,06-May,11-May,02-Apr
+6,Los Angeles Clippers,53-29,29-Dec,24-17,22-Aug,31-21,07-Mar,06-Apr,09-Jan,11-Jul,09-Jul,11-Jul,35-18,18-Nov,08-Apr,28-15,3-0,07-Aug,11-May,11-Mar,07-Apr,08-Aug,06-Jan
+7,Atlanta Hawks,48-34,27-14,21-20,29-23,19-Nov,11-Jul,10-Aug,08-Aug,06-Apr,05-May,08-Feb,31-24,17-Oct,05-Jul,29-17,02-Jan,10-Jul,09-May,06-Sep,06-May,12-Apr,03-Mar
+8,Boston Celtics,48-34,28-13,20-21,31-21,17-13,10-Jun,09-Sep,12-Jun,06-Apr,07-Mar,04-Jun,32-23,16-Nov,05-Jul,26-13,01-Jan,09-Jul,08-Jun,09-Aug,09-Mar,07-Jul,05-Feb
+9,Charlotte Hornets,48-34,30-Nov,18-23,33-19,15-15,13-May,12-Jun,08-Aug,04-Jun,05-May,06-Apr,27-26,21-Aug,06-May,25-17,0-2,10-May,07-Jul,06-Nov,07-Mar,13-Mar,05-Mar
+10,Miami Heat,48-34,28-13,20-21,31-21,17-13,10-Aug,11-Jul,10-Jun,06-Apr,05-May,06-Apr,29-24,19-Oct,07-May,24-20,01-Jan,09-May,08-Jul,09-Aug,06-May,10-May,05-Mar
+11,Indiana Pacers,45-37,26-15,19-22,30-22,15-15,13-May,08-Aug,09-Sep,04-Jun,05-May,06-Apr,28-25,17-Dec,09-Sep,21-13,0-3,11-Feb,07-Sep,07-Aug,06-Jul,08-Jul,06-Jan
+12,Detroit Pistons,44-38,26-15,18-23,29-23,15-15,11-Jul,10-Jun,08-Oct,07-Mar,05-May,03-Jul,27-27,17-Nov,06-May,21-20,3-0,06-Sep,09-Jun,07-Aug,06-Jun,09-Jun,04-Mar
+13,Portland Trail Blazers,44-38,28-13,16-25,15-15,29-23,05-May,05-May,05-May,11-May,10-Aug,08-Oct,27-27,17-Nov,02-Jul,23-21,01-Feb,06-Sep,07-Oct,09-May,09-Feb,08-Aug,04-Feb
+14,Dallas Mavericks,42-40,23-18,19-22,15-15,27-25,08-Feb,04-Jun,03-Jul,11-Jul,09-Sep,07-Sep,29-26,13-14,06-Nov,19-18,01-Jan,09-Jul,09-May,09-Sep,04-Jun,05-Oct,05-Feb
+15,Memphis Grizzlies,42-40,26-15,16-25,17-13,25-27,07-Mar,07-Mar,03-Jul,09-Sep,09-Sep,07-Sep,31-22,Nov-18,08-Mar,15-23,02-Jan,08-Jul,08-Aug,10-Apr,07-Apr,06-Oct,01-Jun
+16,Chicago Bulls,42-40,26-15,16-25,25-27,17-13,12-Jun,10-Jun,Mar-15,05-May,06-Apr,06-Apr,27-25,15-15,10-Apr,14-19,02-Jan,08-Apr,08-Jul,08-Aug,04-Aug,08-Sep,04-Mar
+17,Houston Rockets,41-41,23-18,18-23,13-17,28-24,06-Apr,03-Jul,04-Jun,09-Sep,11-Jul,08-Aug,27-28,14-13,05-Aug,14-18,0-2,07-Sep,09-Jul,09-Jul,04-Jun,08-Aug,04-Feb
+18,Washington Wizards,41-41,22-19,19-22,30-22,Nov-19,09-Sep,11-Jul,10-Jun,02-Aug,04-Jun,05-May,23-28,18-13,07-Jun,22-22,02-Jan,04-Jul,08-Aug,07-Aug,08-Jun,07-Sep,05-Feb
+19,Utah Jazz,40-42,24-17,16-25,16-14,24-28,06-Apr,06-Apr,04-Jun,08-Aug,09-Sep,07-Nov,26-26,14-16,06-Aug,23-13,02-Jan,06-Jul,06-Sep,07-Aug,07-Jun,09-Jul,03-Apr
+20,Orlando Magic,35-47,23-18,Dec-29,21-31,14-16,12-Jun,May-13,04-Dec,07-Mar,02-Aug,05-May,23-29,Dec-18,06-Oct,Dec-20,0-2,09-Jun,10-May,02-Dec,05-Jul,06-Nov,03-Apr
+21,Denver Nuggets,33-49,18-23,15-26,15-15,18-34,06-Apr,05-May,04-Jun,04-Dec,07-Nov,07-Nov,22-32,Nov-17,10-May,Nov-21,01-Jan,05-Nov,06-Sep,06-Sep,05-Jul,09-Aug,01-Apr
+22,Milwaukee Bucks,33-49,23-18,Oct-31,21-31,Dec-18,09-Sep,04-Dec,08-Oct,04-Jun,04-Jun,04-Jun,22-32,Nov-17,06-Apr,Dec-27,0-2,07-Sep,06-Oct,07-Aug,05-Jun,06-Sep,02-May
+23,Sacramento Kings,33-49,18-23,15-26,14-16,19-33,06-Apr,05-May,03-Jul,07-Nov,08-Aug,Apr-14,22-31,Nov-18,08-Apr,Nov-19,01-Feb,06-Oct,05-Aug,08-Jul,04-Jul,06-Nov,03-Apr
+24,New York Knicks,32-50,18-23,14-27,21-31,Nov-19,08-Aug,07-Nov,06-Dec,05-May,04-Jun,02-Aug,23-32,Sep-18,04-Jul,14-23,02-Jan,06-Sep,07-Aug,08-Sep,02-Sep,05-Oct,02-Apr
+25,New Orleans Pelicans,30-52,21-20,Sep-32,Oct-20,20-32,04-Jun,04-Jun,02-Aug,08-Oct,08-Oct,04-Dec,20-33,Oct-19,05-May,Nov-23,0-3,04-Oct,06-Sep,08-Jun,05-Jul,05-Dec,02-May
+26,Minnesota Timberwolves,29-53,14-27,15-26,Nov-19,18-34,05-May,02-Aug,04-Jun,04-Dec,10-Aug,Apr-14,17-37,Dec-16,07-Jul,Sep-23,2-0,06-Sep,04-Dec,Feb-14,05-Jun,06-Sep,04-Mar
+27,Phoenix Suns,23-59,14-27,Sep-32,Jun-24,17-35,01-Sep,01-Sep,04-Jun,06-Dec,06-Oct,May-13,14-40,Sep-19,04-May,Oct-32,02-Jan,06-Aug,Apr-14,02-Dec,01-Sep,05-Nov,03-Apr
+28,Brooklyn Nets,21-61,14-27,Jul-34,Dec-40,Sep-21,06-Oct,Apr-14,Feb-16,04-Jun,03-Jul,02-Aug,14-40,Jul-21,07-Apr,Jun-34,0-3,04-Oct,05-Oct,Mar-13,05-Jul,04-Nov,0-7
+29,Los Angeles Lakers,17-65,Dec-29,May-36,Sep-21,Aug-44,04-Jun,02-Aug,03-Jul,Mar-15,Feb-14,Mar-15,Nov-44,Jun-21,02-Jul,Apr-44,0-2,02-Dec,Apr-13,Mar-14,02-Aug,05-Oct,01-Jun
+30,Philadelphia 76ers,Oct-72,Jul-34,Mar-38,Mar-49,Jul-23,Feb-14,0-18,Jan-17,02-Aug,04-Jun,01-Sep,Aug-45,Feb-27,0-6,May-41,0-2,0-16,Mar-13,04-Oct,01-Nov,Jan-14,01-Jun
