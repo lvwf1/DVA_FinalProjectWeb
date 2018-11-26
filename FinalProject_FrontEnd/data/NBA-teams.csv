@@ -1,0 +1,31 @@
+no,place,teamname,lat,lon,EASTorWEST,rank,abb,winrate,Elo,isClicked
+1,Toronto,Raptors,44.391,-80.53,East,1,TOR,11.52,1655,FALSE
+2,DC,Wizards,38.93,-76.518999,East,2,WAS,1.82,1533,FALSE
+3,Atlanta Botanical city,Hawks,33.46,-84.25,East,3,ATL,0.48,1322,FALSE
+4,Chicago city,Bulls,41.51,-88.79,East,4,CHI,0.78,1341,FALSE
+5,Cleveland city,Cavaliers,40.640475,-82.582569,East,5,CLE,5.82,1346,FALSE
+6,Milwaukee city,Bucks,43.241809,-88.906837,East,6,MIL,2.2,1614,FALSE
+7,Miami city,Heat,26.4889689,-81.2264393,East,7,MIA,1.84,1492,FALSE
+8,Brooklyn,Nets,41.23,-74.71,East,8,BKN,0.09,1461,FALSE
+9,Orlando city,Magic,28.33,-81.2,East,9,ORL,0.17,1418,FALSE
+10,Boston city,Celtics,42.3584308,-71.0597732,East,10,BOS,10.79,1612,FALSE
+11,Indianapolis city (balance),Pacers,39.766911,-86.149963,East,11,IND,2.85,1545,FALSE
+12,Charlotte city,Horneys,36.09931,-80.817799,East,12,CHA,0.47,1493,FALSE
+13,New York city,Knicks,40.71455,-74.007124,East,13,NYK,0.26,1313,FALSE
+14,Detroit city,Pistons,42.408871,-85.002647,East,14,DET,0.79,1469,FALSE
+15,Philadelphia city,76ers,40.252335,-76.163789,East,15,PHI,1.6,1608,FALSE
+16,Golden State city,Warriors,37.47,-121.13,West,1,GSW,21.04,1730,FALSE
+17,Memphis city,Grizzlies,35.749681,-89.04892,West,2,MEM,0.67,1466,FALSE
+18,Houston city,Rocket,30.46,-95.23,West,3,HOU,12.16,1638,FALSE
+19,Portland city,TrailBlazers,44.52186,-122.882594,West,4,POR,3.23,1533,FALSE
+20,San Antonio city,Spurs,29.4241219,-98.4936282,West,7,SAS,8.72,1470,FALSE
+21,Los Angeles city,Clippers,34.55349,-117.245323,West,5,LAC,2.23,1475,FALSE
+22,Dallas city,Mavericks,32.7801399,-96.8004511,West,6,DAL,0.26,1419,FALSE
+23,Phoenix city,Suns,33.142,-112.0435,West,9,PHX,0.08,1352,FALSE
+24,Sacramento city,Kings,39.915291,-122.594651,West,10,SAC,0.19,1344,FALSE
+25,New Orleans,Pelicans,30.1,-91.2,West,8,NOP,1.45,1563,FALSE
+26,Denver city,Nuggets,39.737567,-104.9847179,West,11,DEN,0.98,1600,FALSE
+27,Oklahoma City,Thunder,35.29,-97.49,West,12,OKC,2.66,1642,FALSE
+28,Salt Lake City,Utah Jazz,40.47,-111.58,West,14,UTH,4.35,1599,FALSE
+29,Los Angeles city,Lakers,33.05349,-116.245323,West,13,LAL,0.05,1560,FALSE
+30,Minneapolis city,Timberwolves,43.979031,-94.264931,West,15,MIN,0.45,1553,FALSE
