@@ -9,7 +9,9 @@ Team Members: Zibin Chen, Weifeng Lyu, Zeyu Ni, Jingya Qin, Jian Zhan, Yang Zhan
 ## Required Packages for Python 3.6: flask, flask_restful, flask_cors, pandas, numpy, matplotlib, sklearn, keras, tensorflow, collections
 
 Clone this repository, Import <path>/FinalProject_BackEnd project files into PyCharm Project with Flask Template with Default Settings, install All required packeages to python virtual environment
+  
   OR
+  
 Open Terminal, pip all required packeages in terminal
 
 ### EXECUTION
@@ -17,7 +19,9 @@ Open Terminal, pip all required packeages in terminal
 FinalProject_BackEnd:
 1. Run DVA_FinalProjectWeb in PyCharm directly OR Use PyCharm Terminal then enter command: python.exe -m flask run
 2. The back-end application is running localhost under http://localhost:5000/ by default
+
   OR
+  
 1. cd <path>/FinalProject_BackEnd, python.exe -m flask run
 2. The back-end application is running localhost under http://localhost:5000/ by default
 
