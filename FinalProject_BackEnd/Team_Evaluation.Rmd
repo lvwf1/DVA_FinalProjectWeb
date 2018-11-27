@@ -1,0 +1,110 @@
+---
+title: "NBA_TeamEvaluation"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r cars}
+library(RCurl)
+library(dplyr)
+library(ggplot2)
+URL <- "https://raw.githubusercontent.com/fivethirtyeight/data/master/nba-elo/nbaallelo.csv"
+x <- getURL(URL)
+out <- read.csv(textConnection(x))
+
+df_team <- tbl_df(out)
+
+```
+
+# Overall team evaluation 
+
+## Relationship between Location and the winning rate
+
+```{r pressure, echo=FALSE}
+df_box <-
+  df_team %>%
+  group_by(year_id, team_id) %>%
+  summarise(avg_pts = mean(pts))
+
+ggplot(df_box) + 
+  geom_boxplot(aes(x= year_id, y=avg_pts))
+
+team_line_plot <- function(data_input, teams){
+  data_plot <- 
+    data_input %>%
+    filter(team_id %in% teams)
+  
+  data_plot_line <- as.data.frame(data_plot)
+  ggplot(data_plot_line, aes(x = year_id, y = avg_pts, color = team_id)) + geom_point() + geom_smooth() 
+  
+}
+```
+```{r pressure, echo=FALSE}
+df_team_process <- 
+  df_team %>%
+  mutate(cut_seasongame = cut(df_team$seasongame, breaks = c(-Inf,10,20,30,40,50,60,70,80,Inf)))
+
+df_gametime <- 
+  df_team_process %>% 
+    group_by(year_id, cut_seasongame) %>% 
+    summarise(avg = mean(pts))
+
+df_gametime_plot <- as.data.frame(df_gametime)
+
+ggplot(df_gametime_plot, aes(x = year_id, y = avg)) + 
+  geom_area(aes(color = cut_seasongame, fill = cut_seasongame), 
+            alpha = 0.5, position = position_dodge(0.8)) 
+
+```
+## Heatmap for winning correlation
+
+```{r}
+df_team_hm <- 
+  df_team %>% 
+    group_by(team_id, game_result) %>%
+    summarise(n_win = n()) %>%
+    filter(game_result == "W") %>%
+    select(team_id, n_win)
+```
+
+
+## Decision Tree fancy 
+```{r}
+library(rpart)				        
+library(rattle)					
+library(rpart.plot)
+
+form <- as.formula(game_result ~ year_id + seasongame + is_playoffs + pts + elo_i + elo_n)
+tree.1 <- rpart(form,data=df_team,control=rpart.control(minsplit=20,cp=0))
+fancyRpartPlot(tree.1)	
+
+```
+
+
+
+```{r}
+library(corrplot)
+df_team_rt <- 
+  df_team %>% 
+    group_by(team_id, year_id, game_result) %>%
+    summarise(n_win = n(), avg_pts = mean(pts), avg_elo_i = mean(elo_i), avg_elo_n = mean(elo_n), 
+              avg_opp_pts = mean(opp_pts), avg_opp_elo_i = mean(opp_elo_i), avg_opp_elo_n = mean(opp_elo_n)) %>% 
+    left_join(
+      df_team %>% 
+        group_by(team_id, year_id) %>%
+        summarise(n_win_total = n()), by = c("team_id", "year_id")
+    ) %>%
+    mutate(win_rate = n_win / n_win_total) %>%
+    filter(game_result == "W") %>%
+    ungroup() %>%
+    select(-c(game_result, n_win, n_win_total, team_id, year_id))
+    
+df_team_rt_cor <- cor(df_team_rt)
+corrplot(df_team_rt_cor, method = "ellipse")
+
+```
+
+
