@@ -1,7 +1,7 @@
 # DVA_FinalProjectWeb
 
 ### DESCRIPTION
-The project is completed by CSE6242 Data Visual Analytics Team80, NBA Players and Teams Analysis
+The project is completed by CSE6242 Data Visual Analytics Team80, this repository contains back-end analysis and front-end visualization of NBA Players and Teams Analysis.
 Team Members: Zibin Chen, Weifeng Lyu, Zeyu Ni, Jingya Qin, Jian Zhan, Yang Zhang
 
 ### INSTALLATION
