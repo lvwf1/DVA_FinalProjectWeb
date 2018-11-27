@@ -1,9 +1,10 @@
 # DVA_FinalProjectWeb
 
-Prerequisite: Python 3.6, Pycharm IDE
+Prerequisite: Python 3.6, Pycharm IDE, RStudio
 
 Required Packages for Python 3.6: flask, flask_restful, flask_cors, pandas, numpy, matplotlib, sklearn, keras, tensorflow, collections
 
+a.Player Evaluation
 Run Backend Application:
 PyCharm Version:
 1. Create PyCharm Project with Flask Template with Default Settings, install All required packeages to virtual environment
@@ -19,3 +20,8 @@ Browse Frontend Visualization
 1. cd <path>/FinalProject_FrontEnd
 2. python -m http.server
 3. The application is running localhost under http://localhost:8000/ by default
+  
+b.Team Evaluation
+1. Open DVA_FinalProjectWeb/FinalProject_BackEnd and run Team_Evaluation.Rmd in RStudio
+
+c.Champion Evaluation
