@@ -23,11 +23,11 @@ Browse Frontend Visualization
   
 ## b. Team Evaluation
 FinalProject_BackEnd
-1. Run Team_Evaluation.Rmd in RStudio
+1. Run Team_Evaluation.Rmd in RStudio to get the evaluation result as well as visualiztion
 
 ## c. Champion Evaluation
 FinalProject_BackEnd
-1. Run main_champion.py in Spyder
+1. Run main_champion.py in Spyder to get the prediction and validation result
 
 FinalProject_FrontEnd
-1. Run ChampionPrediction.html
+1. Run ChampionPrediction.html to see the champion prediction visualization 
