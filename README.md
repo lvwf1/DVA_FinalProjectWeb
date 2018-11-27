@@ -5,8 +5,8 @@ The project is completed by CSE6242 Data Visual Analytics Team80 for the topic o
 Team Members: Zibin Chen, Weifeng Lyu, Zeyu Ni, Jingya Qin, Jian Zhan, Yang Zhang
 
 ### INSTALLATION
-## Prerequisite: Python 3.6, Pycharm IDE, RStudio, Spyder
-## Required Packages for Python 3.6: flask, flask_restful, flask_cors, pandas, numpy, matplotlib, sklearn, keras, tensorflow, collections
+Prerequisite: Python 3.6, Pycharm IDE, RStudio, Spyder
+Required Packages for Python 3.6: flask, flask_restful, flask_cors, pandas, numpy, matplotlib, sklearn, keras, tensorflow, collections
 
 Clone this repository, Import <path>/FinalProject_BackEnd project files into PyCharm Project with Flask Template with Default Settings, install All required packeages to python virtual environment
   
