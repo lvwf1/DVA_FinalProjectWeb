@@ -1,6 +1,6 @@
 # DVA_FinalProjectWeb
 
-# Prerequisite: Python 3.6, Pycharm IDE, RStudio, Spyder
+## Prerequisite: Python 3.6, Pycharm IDE, RStudio, Spyder
 
 # Required Packages for Python 3.6: flask, flask_restful, flask_cors, pandas, numpy, matplotlib, sklearn, keras, tensorflow, collections
 
