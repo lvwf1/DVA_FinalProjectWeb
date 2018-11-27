@@ -34,7 +34,7 @@ Enter 2018 in Most Improved Player Stats
 Enter 2018 in Team WinShare
 ![Alt text](FinalProject_BackEnd\Data Visualization\AllStar.jpg?raw=true "Title")
 Select Deep Neural Network in the first dropdown select
-![Alt text](FinalProject_BackEnd\Data Visualization\AllStar.jpg?raw=true "Title")
+![Alt text](DVA_FinalProjectWeb/FinalProject_BackEnd/Data Visualization/AllStar.JPG)
   
 ## b. Team Evaluation
 FinalProject_BackEnd
