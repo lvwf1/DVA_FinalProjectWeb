@@ -4,7 +4,7 @@
 
 ### Required Packages for Python 3.6: flask, flask_restful, flask_cors, pandas, numpy, matplotlib, sklearn, keras, tensorflow, collections
 
-## a.Player Evaluation
+## a. Player Evaluation
 Run Backend Application:
 PyCharm Version:
 1. Create PyCharm Project with Flask Template with Default Settings, install All required packeages to virtual environment
@@ -21,11 +21,11 @@ Browse Frontend Visualization
 2. python -m http.server
 3. The application is running localhost under http://localhost:8000/ by default
   
-## b.Team Evaluation
+## b. Team Evaluation
 FinalProject_BackEnd
 1. Run Team_Evaluation.Rmd in RStudio
 
-## c.Champion Evaluation
+## c. Champion Evaluation
 FinalProject_BackEnd
 1. Run main_champion.py in Spyder
 
